@@ -67,8 +67,8 @@
     <Reference Include="Microsoft.Practices.Prism">
       <HintPath>..\packages\Prism.4.0.0.0\lib\SL4\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Prism.AutofacExtensions">
-      <HintPath>..\..\..\..\Lib\Prism4\Microsoft.Practices.Prism.AutofacExtensions.dll</HintPath>
+    <Reference Include="Microsoft.Practices.Prism.AutofacExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.4.0.0.0\lib\SL4\Microsoft.Practices.Prism.AutofacExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.Interactivity">
       <HintPath>..\packages\Prism.4.0.0.0\lib\SL4\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
