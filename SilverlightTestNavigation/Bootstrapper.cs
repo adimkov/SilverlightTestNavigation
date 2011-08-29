@@ -5,9 +5,13 @@
     using Autofac;
 
     using Microsoft.Practices.Prism.AutofacExtensions;
+    using Microsoft.Practices.Prism.Regions;
 
     using SilverlightTestNavigation.View;
 
+    /// <summary>
+    /// Application bootstrapper
+    /// </summary>
     public class Bootstrapper : AutofacBootstrapper
     {
         protected override DependencyObject CreateShell()
@@ -27,6 +31,7 @@
             var containerBuilder = base.ConfigureContainer();
 
             containerBuilder.RegisterType<ShellView>();
+            containerBuilder.RegisterType<BrowserNavigationBar>().As<INavigationBar>();
 
             return containerBuilder;
         }

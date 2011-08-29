@@ -111,9 +111,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Navigation\ActiveRegionManager.cs" />
     <Compile Include="Navigation\ActiveViewManager.cs" />
     <Compile Include="Navigation\ActiveViewMapperBehavior.cs" />
+    <Compile Include="Navigation\BrowserNavigationBar.cs" />
     <Compile Include="Navigation\INavigationBar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\ShellViewModel.cs" />
