@@ -14,7 +14,7 @@
     <AssemblyName>SilverlightTestNavigation.Host</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
-    <SilverlightApplicationList>{B07DE401-0EE0-4A27-8AAC-89D812E5E3E4}|..\SilverlightTestNavigation\SilverlightTestNavigation.csproj|ClientBin|False</SilverlightApplicationList>
+    <SilverlightApplicationList>{B07DE401-0EE0-4A27-8AAC-89D812E5E3E4}|..\SilverlightTestNavigation\SilverlightTestNavigation.csproj|ClientBin|False,{00DCF6B2-61CB-4CF3-AFAB-3A7F6756FAFB}|..\SilverlightTestNavigation.Module1\SilverlightTestNavigation.Module1.csproj|ClientBin|False</SilverlightApplicationList>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,6 +55,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClientBin\SilverlightTestNavigation.Module1.xap" />
     <Content Include="ClientBin\SilverlightTestNavigation.xap" />
     <Content Include="Silverlight.js" />
     <Content Include="SilverlightTestNavigationTestPage.aspx" />

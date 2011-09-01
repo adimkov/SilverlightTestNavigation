@@ -111,7 +111,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Navigation\ActiveRegionManager.cs" />
     <Compile Include="Navigation\ActiveViewManager.cs" />
     <Compile Include="Navigation\ActiveViewMapperBehavior.cs" />
@@ -134,10 +133,20 @@
     <None Include="Properties\AppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ModulesCatalog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SilverlightTestNavigation.Common\SilverlightTestNavigation.Common.csproj">
+      <Project>{F807591D-0613-46F2-830E-255641283E4A}</Project>
+      <Name>SilverlightTestNavigation.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

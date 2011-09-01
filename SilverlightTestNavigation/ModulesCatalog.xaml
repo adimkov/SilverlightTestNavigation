@@ -1,0 +1,8 @@
+﻿<Modularity:ModuleCatalog xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                          xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+                          xmlns:Modularity="clr-namespace:Microsoft.Practices.Prism.Modularity;assembly=Microsoft.Practices.Prism">
+	<Modularity:ModuleInfoGroup Ref="SilverlightTestNavigation.Module1.xap" InitializationMode="WhenAvailable">
+		<Modularity:ModuleInfo ModuleName="Module1" ModuleType="SilverlightTestNavigation.Module1.Module1Init, SilverlightTestNavigation.Module1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+	</Modularity:ModuleInfoGroup>
+</Modularity:ModuleCatalog>

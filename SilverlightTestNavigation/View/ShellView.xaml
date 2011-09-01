@@ -30,9 +30,13 @@
         <ItemsControl x:Name="NavifationItemsControl" 
                       Style="{StaticResource NavigationPanelStyle}" 
                       prism:ActiveRegionManager.RegionName="NavigationRegion"
-                      prism:ActiveRegionManager.IsViewTrackingEnabled="True"
                       Grid.Row="1"/>
         <controls:GridSplitter Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <ContentControl x:Name="MainContentControl" Margin="{StaticResource MainMarging}" Grid.Row="1" Grid.Column="2"/>
+        <ContentControl x:Name="MainContentControl" 
+                        Margin="{StaticResource MainMarging}"
+                        prism:ActiveRegionManager.RegionName="MainRegion"
+                        prism:ActiveRegionManager.IsViewTrackingEnabled="True"
+                        Grid.Row="1" 
+                        Grid.Column="2"/>
     </Grid>
 </UserControl>
