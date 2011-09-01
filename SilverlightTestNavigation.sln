@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverlightTestNavigation.H
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverlightTestNavigation.Module1", "SilverlightTestNavigation.Module1\SilverlightTestNavigation.Module1.csproj", "{00DCF6B2-61CB-4CF3-AFAB-3A7F6756FAFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverlightTestNavigation.Common", "SilverlightTestNavigation.Common\SilverlightTestNavigation.Common.csproj", "{F807591D-0613-46F2-830E-255641283E4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{00DCF6B2-61CB-4CF3-AFAB-3A7F6756FAFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00DCF6B2-61CB-4CF3-AFAB-3A7F6756FAFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00DCF6B2-61CB-4CF3-AFAB-3A7F6756FAFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F807591D-0613-46F2-830E-255641283E4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F807591D-0613-46F2-830E-255641283E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F807591D-0613-46F2-830E-255641283E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F807591D-0613-46F2-830E-255641283E4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
