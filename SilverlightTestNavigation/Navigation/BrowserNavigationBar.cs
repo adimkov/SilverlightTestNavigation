@@ -60,12 +60,12 @@
         /// </summary>
         public void ClearFragments()
         {
-            var currentUri = GetUrlBuilder();
-            if (currentUri.Fragment != string.Empty)
-            {
-                currentUri.Fragment = string.Empty;
-                UpdateUri(currentUri.Uri);
-            }
+            ////var currentUri = GetUrlBuilder();
+            ////if (currentUri.Fragment != string.Empty)
+            ////{
+            ////    currentUri.Fragment = string.Empty;
+            ////    UpdateUri(currentUri.Uri);
+            ////}
         }
 
         /// <summary>

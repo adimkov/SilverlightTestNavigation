@@ -11,7 +11,7 @@
         /// <typeparam name="T">Type of the region.</typeparam>
         /// <param name="regionManager">The region manager.</param>
         /// <param name="regionName">Name of the region.</param>
-        public static void RegisterViewWithRegion<T>(this RegionManager regionManager, string regionName)
+        public static void RegisterViewWithRegion<T>(this IRegionManager regionManager, string regionName)
         {
             regionManager.RegisterViewWithRegion(regionName, typeof(T));
         }    

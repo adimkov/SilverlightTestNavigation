@@ -18,7 +18,7 @@
         /// </summary>
         /// <param name="container">The container.</param>
         /// <param name="regionManager">The region manager.</param>
-        public Module1Init(IContainer container, RegionManager regionManager)
+        public Module1Init(IContainer container, IRegionManager regionManager)
             : base(container, regionManager)
         {
         }
@@ -28,8 +28,10 @@
         /// </summary>
         public override void Initialize()
         {
-            RegionManager.RegisterViewWithRegion<Module1View>(RegionNames.MainRegion);
             RegionManager.RegisterViewWithRegion<NavigationView>(RegionNames.NavigationRegion);
+            
+            RegionManager.RegisterViewWithRegion<Module1View>(RegionNames.MainRegion);
+            RegionManager.RegisterViewWithRegion<Module1SecondView>(RegionNames.MainRegion);
         }
     }
 }

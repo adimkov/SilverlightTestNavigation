@@ -20,14 +20,14 @@
         /// <summary>
         /// Gets the region manager.
         /// </summary>
-        protected RegionManager RegionManager { get; private set; }
+        protected IRegionManager RegionManager { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ModuleBase"/> class.
         /// </summary>
         /// <param name="container">The container.</param>
         /// <param name="regionManager">The region manager.</param>
-        public ModuleBase(IContainer container, RegionManager regionManager)
+        public ModuleBase(IContainer container, IRegionManager regionManager)
         {
             Container = container;
             RegionManager = regionManager;
