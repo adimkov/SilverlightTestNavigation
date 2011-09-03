@@ -4,6 +4,7 @@
 
     using Microsoft.Practices.Prism.Regions;
 
+    using SilverlightTestNavigation.Common;
     using SilverlightTestNavigation.Common.Modularity;
     using SilverlightTestNavigation.Module1.View;
 
@@ -13,11 +14,10 @@
     public class Module1Init : ModuleBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModuleBase"/> class.
+        /// Initializes a new instance of the <see cref="Module1Init"/> class.
         /// </summary>
         /// <param name="container">The container.</param>
         /// <param name="regionManager">The region manager.</param>
-        /// <remarks></remarks>
         public Module1Init(IContainer container, RegionManager regionManager)
             : base(container, regionManager)
         {
@@ -28,7 +28,8 @@
         /// </summary>
         public override void Initialize()
         {
-            RegionManager.AddToRegion("MainRegion", new Module1View());
+            RegionManager.RegisterViewWithRegion<Module1View>(RegionNames.MainRegion);
+            RegionManager.RegisterViewWithRegion<NavigationView>(RegionNames.NavigationRegion);
         }
     }
 }

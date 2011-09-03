@@ -50,13 +50,13 @@
         {
             string newViewName = string.Empty;
             string oldViewName = string.Empty;
-            
-            if (args.NewItems.Count > 0)
+
+            if (args.NewItems != null && args.NewItems.Count > 0)
             {
                  newViewName = args.NewItems[0].GetType().Name;
             }
 
-            if (args.OldItems.Count > 0)
+            if (args.OldItems != null && args.OldItems.Count > 0)
             {
                 oldViewName = args.OldItems[0].GetType().Name;
             }

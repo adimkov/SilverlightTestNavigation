@@ -19,9 +19,9 @@
         public const string FragmentTemplate = "{0}/";
 
         /// <summary>
-        /// Template of fragment path to add
+        /// Template of fragment path to add.
         /// </summary>
-        public const string AddFragmentTemplate = "{0}/{1}/";
+        public const string AddFragmentTemplate = "{0}/{1}";
 
         /// <summary>
         /// Adds fragment to url.
@@ -61,8 +61,11 @@
         public void ClearFragments()
         {
             var currentUri = GetUrlBuilder();
-            currentUri.Fragment = String.Empty;
-            UpdateUri(currentUri.Uri);
+            if (currentUri.Fragment != string.Empty)
+            {
+                currentUri.Fragment = string.Empty;
+                UpdateUri(currentUri.Uri);
+            }
         }
 
         /// <summary>
