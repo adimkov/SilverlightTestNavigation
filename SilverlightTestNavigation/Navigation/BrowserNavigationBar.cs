@@ -16,12 +16,7 @@
         /// <summary>
         /// Template of fragments path.
         /// </summary>
-        public const string FragmentTemplate = "{0}/";
-
-        /// <summary>
-        /// Template of fragment path to add.
-        /// </summary>
-        public const string AddFragmentTemplate = "{0}/{1}";
+        public const string FragmentTemplate = "/{0}";
 
         /// <summary>
         /// Adds fragment to url.
@@ -29,9 +24,9 @@
         /// <param name="fragment">Fragment to add.</param>
         public void AddFragment(string fragment)
         {
-            var currentUri = GetUrlBuilder();
-            currentUri.Fragment = AddFragmentTemplate.FormatString(currentUri.Fragment, fragment);
-            UpdateUri(currentUri.Uri);
+            var currentUri = this.GetCurrentUrl();
+            currentUri += FragmentTemplate.FormatString(fragment);
+            UpdateUri(currentUri);
         }
 
         /// <summary>
@@ -50,9 +45,9 @@
         /// <param name="newFragment">New fragment.</param>
         public void ReplaceFragment(string oldFragment, string newFragment)
         {
-            var currentUri = GetUrlBuilder();
-            currentUri.Fragment = currentUri.Fragment.Replace(FragmentTemplate.FormatString(oldFragment), newFragment);
-            UpdateUri(currentUri.Uri);
+            var currentUri = this.GetCurrentUrl();
+            currentUri = currentUri.Replace(FragmentTemplate.FormatString(oldFragment), newFragment);
+            UpdateUri(currentUri);
         }
 
         /// <summary>
@@ -60,31 +55,44 @@
         /// </summary>
         public void ClearFragments()
         {
-            ////var currentUri = GetUrlBuilder();
-            ////if (currentUri.Fragment != string.Empty)
-            ////{
-            ////    currentUri.Fragment = string.Empty;
-            ////    UpdateUri(currentUri.Uri);
-            ////}
+            var currentUri = this.GetCurrentUrl();
+            currentUri = currentUri.Remove(currentUri.IndexOf(FragmgentSeparator)) + FragmgentSeparator;
+            UpdateUri(currentUri);
         }
 
         /// <summary>
-        /// Gets current url builder.
+        /// Gets current url as <see cref="string"/> with fragment.
         /// </summary>
         /// <returns>The builder of <see cref="Uri"/>.</returns>
-        private UriBuilder GetUrlBuilder()
+        private string GetCurrentUrl()
         {
-            var uriBuilder   = new UriBuilder(HtmlPage.Document.DocumentUri);
-            return uriBuilder;
+            var uri = HtmlPage.Document.DocumentUri;
+            var uriWithFragment = uri.AbsoluteUri;
+            if (uri.Fragment == string.Empty)
+            {
+                uriWithFragment = uri.AbsoluteUri + FragmgentSeparator;
+            }
+
+            return uriWithFragment;
+        }
+
+        /// <summary>
+        /// Removes the fragment separator from URI.
+        /// </summary>
+        /// <param name="uriFragment">The URI fragment.</param>
+        /// <returns>Fragment without separator.</returns>
+        private string RemoveFragmentSeparator(string uriFragment)
+        {
+            return uriFragment.Replace(FragmgentSeparator, string.Empty);
         }
 
         /// <summary>
         /// Update browser uri.
         /// </summary>
         /// <param name="uri">New uri for update.</param>
-        private void UpdateUri(Uri uri)
+        private void UpdateUri(string uri)
         {
-            HtmlPage.Window.Navigate(uri);
+            HtmlPage.Window.Navigate(new Uri(uri));
         }
     }
 }

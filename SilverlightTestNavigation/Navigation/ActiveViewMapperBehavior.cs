@@ -1,6 +1,7 @@
 ﻿namespace Microsoft.Practices.Prism.Regions
 {
     using System.Collections.Specialized;
+    using System.Linq;
 
     /// <summary>
     /// Mapping in the browser navigation bar an active view in a region.
@@ -73,7 +74,11 @@
                     _navigatioBar.ReplaceFragment(oldViewName, newViewName);
                     break;
                 case NotifyCollectionChangedAction.Reset:
-                    _navigatioBar.ClearFragments();
+                    if (!Region.ActiveViews.Any())
+                    {
+                        _navigatioBar.ClearFragments();
+                    }
+
                     break;
             }
         }
