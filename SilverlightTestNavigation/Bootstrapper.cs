@@ -34,6 +34,7 @@
 
             containerBuilder.RegisterType<ShellView>();
             containerBuilder.RegisterType<BrowserNavigationBar>().As<INavigationBar>();
+            containerBuilder.RegisterType<FragmentBuilder>().As<IFragmentBuilder>().SingleInstance();
             containerBuilder.Register(x => Container).As<IContainer>();
             return containerBuilder;
         }

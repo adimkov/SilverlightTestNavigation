@@ -80,7 +80,11 @@
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Module1Init.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\Module1SecondViewModel.cs" />
     <Compile Include="ViewModel\NavigationViewModel.cs" />
+    <Compile Include="View\Module1NestedView.xaml.cs">
+      <DependentUpon>Module1NestedView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Module1SecondView.xaml.cs">
       <DependentUpon>Module1SecondView.xaml</DependentUpon>
     </Compile>
@@ -96,11 +100,19 @@
       <Project>{F807591D-0613-46F2-830E-255641283E4A}</Project>
       <Name>SilverlightTestNavigation.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SilverlightTestNavigation\SilverlightTestNavigation.csproj">
+      <Project>{B07DE401-0EE0-4A27-8AAC-89D812E5E3E4}</Project>
+      <Name>SilverlightTestNavigation</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\Module1NestedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Module1SecondView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

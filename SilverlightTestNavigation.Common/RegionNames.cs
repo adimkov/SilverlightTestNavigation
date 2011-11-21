@@ -14,5 +14,10 @@
         ///  Name of the navigation region.
         /// </summary>
         public const string NavigationRegion = "NavigationRegion";
+
+        /// <summary>
+        /// Name of nested region.
+        /// </summary>
+        public const string SecondRegion = "SecondRegion";
     }
 }
