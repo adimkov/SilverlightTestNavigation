@@ -2,11 +2,14 @@
 {
     using System.Collections.Specialized;
     using System.Linq;
+    using System.Windows;
+
+    using Microsoft.Practices.Prism.Regions.Behaviors;
 
     /// <summary>
     /// Mapping in the browser navigation bar an active view in a region.
     /// </summary>
-    public class ActiveViewMapperBehavior : RegionBehavior
+    public class ActiveViewMapperBehavior : RegionBehavior, IHostAwareRegionBehavior
     {
         /// <summary>
         /// The key of behavior.
@@ -14,19 +17,46 @@
         public const string BehaviorKey = "ActiveViewMapperBehavior";
 
         /// <summary>
-        /// Holds reference to navigation bar.
+        /// The fragment builder.
         /// </summary>
-        private INavigationBar _navigatioBar;
+        private readonly IFragmentBuilder _fragmentBuilder;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ActiveViewMapperBehavior"/> class. 
+        /// Holds reference to navigation bar.
         /// </summary>
-        /// <param name="navigatioBar">
-        /// Navigation bar.
-        /// </param>
-        public ActiveViewMapperBehavior(INavigationBar navigatioBar)
+        private readonly INavigationBar _navigatioBar;
+
+        private DependencyObject _hostControl;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ActiveViewMapperBehavior"/> class.
+        /// </summary>
+        /// <param name="navigatioBar">Navigation bar.</param>
+        /// <param name="fragmentBuilder">The fragment builder.</param>
+        public ActiveViewMapperBehavior(INavigationBar navigatioBar, IFragmentBuilder fragmentBuilder)
         {
             _navigatioBar = navigatioBar;
+            _fragmentBuilder = fragmentBuilder;
+        }
+
+        /// <summary>
+        /// Gets or sets the <see cref="T:System.Windows.DependencyObject"/> that the <see cref="T:Microsoft.Practices.Prism.Regions.IRegion"/> is attached to.
+        /// </summary>
+        /// <value>
+        /// A <see cref="T:System.Windows.DependencyObject"/> that the <see cref="T:Microsoft.Practices.Prism.Regions.IRegion"/> is attached to.
+        ///             This is usually a <see cref="T:System.Windows.FrameworkElement"/> that is part of the tree.
+        /// </value>
+        public DependencyObject HostControl
+        {
+            get
+            {
+                return _hostControl;
+            }
+
+            set
+            {
+                _hostControl = value;
+            }
         }
 
         /// <summary>
@@ -40,6 +70,18 @@
         protected override void OnAttach()
         {
             Region.ActiveViews.CollectionChanged += ActiveViewsOnCollectionChanged;
+            ((FrameworkElement)HostControl).Loaded += OnLoaded;
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
+        {
+            var aciveView = Region.ActiveViews.FirstOrDefault();
+            if (aciveView != null)
+            {
+                _fragmentBuilder.ActiveViewInRegion(aciveView.GetType().Name, Region.Name);
+            }
+
+            FlipFragments();
         }
 
         /// <summary>
@@ -49,37 +91,30 @@
         /// <param name="args">The arguments.</param>
         private void ActiveViewsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
         {
-            string newViewName = string.Empty;
-            string oldViewName = string.Empty;
-
-            if (args.NewItems != null && args.NewItems.Count > 0)
-            {
-                 newViewName = args.NewItems[0].GetType().Name;
-            }
-
-            if (args.OldItems != null && args.OldItems.Count > 0)
-            {
-                oldViewName = args.OldItems[0].GetType().Name;
-            }
-
             switch (args.Action)
             {
                 case NotifyCollectionChangedAction.Add:
-                    _navigatioBar.AddFragment(newViewName);
+                    var newViewName = args.NewItems[0].GetType().Name;
+                    _fragmentBuilder.ActiveViewInRegion(newViewName, Region.Name);
                     break;
                 case NotifyCollectionChangedAction.Remove:
-                    _navigatioBar.RemoveFragment(oldViewName);
-                    break;
-                case NotifyCollectionChangedAction.Replace:
-                    _navigatioBar.ReplaceFragment(oldViewName, newViewName);
-                    break;
                 case NotifyCollectionChangedAction.Reset:
-                    if (!Region.ActiveViews.Any())
-                    {
-                        _navigatioBar.ClearFragments();
-                    }
-
+                    _fragmentBuilder.DeactivateRegion(Region.Name);
                     break;
+            }
+
+            FlipFragments();
+        }
+
+        /// <summary>
+        /// Flips the fragments.
+        /// </summary>
+        private void FlipFragments()
+        {
+            _navigatioBar.ClearFragments();
+            foreach (var fragment in _fragmentBuilder.BuildFragments())
+            {
+                _navigatioBar.AddFragment(fragment);
             }
         }
     }

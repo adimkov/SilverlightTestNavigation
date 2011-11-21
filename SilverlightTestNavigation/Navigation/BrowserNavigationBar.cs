@@ -24,29 +24,8 @@
         /// <param name="fragment">Fragment to add.</param>
         public void AddFragment(string fragment)
         {
-            var currentUri = this.GetCurrentUrl();
+            var currentUri = GetCurrentUrl();
             currentUri += FragmentTemplate.FormatString(fragment);
-            UpdateUri(currentUri);
-        }
-
-        /// <summary>
-        /// Remove fragment from url.
-        /// </summary>
-        /// <param name="fragment">Fragment to remove.</param>
-        public void RemoveFragment(string fragment)
-        {
-            ReplaceFragment(fragment, string.Empty);
-        }
-
-        /// <summary>
-        /// Replace old fragment by new one.
-        /// </summary>
-        /// <param name="oldFragment">Fragment that should by replaced.</param>
-        /// <param name="newFragment">New fragment.</param>
-        public void ReplaceFragment(string oldFragment, string newFragment)
-        {
-            var currentUri = this.GetCurrentUrl();
-            currentUri = currentUri.Replace(FragmentTemplate.FormatString(oldFragment), newFragment);
             UpdateUri(currentUri);
         }
 
@@ -55,7 +34,7 @@
         /// </summary>
         public void ClearFragments()
         {
-            var currentUri = this.GetCurrentUrl();
+            var currentUri = GetCurrentUrl();
             currentUri = currentUri.Remove(currentUri.IndexOf(FragmgentSeparator)) + FragmgentSeparator;
             UpdateUri(currentUri);
         }
@@ -74,16 +53,6 @@
             }
 
             return uriWithFragment;
-        }
-
-        /// <summary>
-        /// Removes the fragment separator from URI.
-        /// </summary>
-        /// <param name="uriFragment">The URI fragment.</param>
-        /// <returns>Fragment without separator.</returns>
-        private string RemoveFragmentSeparator(string uriFragment)
-        {
-            return uriFragment.Replace(FragmgentSeparator, string.Empty);
         }
 
         /// <summary>

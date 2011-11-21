@@ -32,6 +32,7 @@
             
             RegionManager.RegisterViewWithRegion<Module1View>(RegionNames.MainRegion);
             RegionManager.RegisterViewWithRegion<Module1SecondView>(RegionNames.MainRegion);
+            RegionManager.RegisterViewWithRegion<Module1NestedView>(RegionNames.SecondRegion);
         }
     }
 }

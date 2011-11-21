@@ -12,19 +12,6 @@
         void AddFragment(string fragment);
 
         /// <summary>
-        /// Remove fragment from url.
-        /// </summary>
-        /// <param name="fragment">Fragment to remove.</param>
-        void RemoveFragment(string fragment);
-
-        /// <summary>
-        /// Replace old fragment by new one.
-        /// </summary>
-        /// <param name="oldFragment">Fragment that should by replaced.</param>
-        /// <param name="newFragment">New fragment.</param>
-        void ReplaceFragment(string oldFragment, string newFragment);
-
-        /// <summary>
         /// Clear fragments in url.
         /// </summary>
         void ClearFragments();

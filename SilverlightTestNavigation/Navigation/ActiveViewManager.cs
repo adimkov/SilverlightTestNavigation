@@ -11,9 +11,14 @@
     public class ActiveViewManager
     {
         /// <summary>
-        /// Holds reference to ActiveViewMapperBehavior
+        /// Holds reference to ActiveViewMapperBehavior.
         /// </summary>
         private ActiveViewMapperBehavior _behavior;
+
+        /// <summary>
+        /// The region host control.
+        /// </summary>
+        private DependencyObject _hostControl;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ActiveViewManager"/> class.
@@ -31,7 +36,18 @@
         /// <summary>
         /// Gets host control of region
         /// </summary>
-        public DependencyObject HostControl { get; private set; }
+        public DependencyObject HostControl
+        {
+            get
+            {
+                return _hostControl;
+            } 
+            private set
+            {
+                _hostControl = value;
+                Behavior.HostControl = value;
+            }
+        }
 
         /// <summary>
         /// Gets region for a host control
